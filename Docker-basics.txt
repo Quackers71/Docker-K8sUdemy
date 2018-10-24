@@ -50,5 +50,59 @@ docker run hello-world # this acually failed so ran
 docker login
 docker run hello-world
 
+# 12. Overriding Default Commands
+docker run busybox echo hi there
+# Output "hi there"
+
+docker run busybox ls
+bin
+dev
+etc
+...
+...
+# These are folders that belong on the busybox image
+
+# 13. Listing Running Containers
+
+docker run busybox ping google.com
+docker ps # In a 2nd Terminal - You will see the running Container
+# Container ID | Image   | Command 			 | Created 		| Status	 | Ports | Names
+# 14aded86a0cd | busybox | "ping.google.com" | 25 secs ago  | Up 23 secs | 		 | epic_coriander
+
+docker ps 
+# Lists Running Containers
+
+docker ps --all
+# Lists All Containers that are or have ever ran
+
+docker run = docker create + docker start
+
+ubuntu@ip-172-31-27-210:~$ docker create hello-world
+451d918f0f923a7eb7aba3300f5e3bb3a629a67cf7918081683ea33019b2eea6
+ubuntu@ip-172-31-27-210:~$ docker start 451d918f0f923a7eb7aba3300f5e3bb3a629a67cf7918081683ea33019b2eea6
+451d918f0f923a7eb7aba3300f5e3bb3a629a67cf7918081683ea33019b2eea6
+
+docker system prune
+docker create busybox echo hi there
+docker start -a 3cf2305fb276ee6a7c932f82a5fd7bee5537323c1de3853dd8de7840e79fac23
+docker ps -a
+docker create busybox ping google.com
+docker start 119af6e7db41e13b85b2c59efaeb119229f3e87f4c7d5de3b89b5f11d78812b3
+docker logs 119af6e7db41e13b85b2c59efaeb119229f3e87f4c7d5de3b89b5f11d78812b3
+docker ps
+docker logs 119af6e7db41e13b85b2c59efaeb119229f3e87f4c7d5de3b89b5f11d78812b3
+docker stop 119af6e7db41e13b85b2c59efaeb119229f3e87f4c7d5de3b89b5f11d78812b3
+docker start 119af6e7db41e13b85b2c59efaeb119229f3e87f4c7d5de3b89b5f11d78812b3
+docker kill 119af6e7db41e13b85b2c59efaeb119229f3e87f4c7d5de3b89b5f11d78812b3
+
+
+
+
+
+
+
+
+
+
 
 
