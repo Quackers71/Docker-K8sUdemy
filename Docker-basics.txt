@@ -42,13 +42,15 @@ docker-compose version
 
 ## docker-and-kubernetes-the-complete-guide
 
-# Section 1: Dive into Docker
+## Section 1: Dive into Docker
 
 # 8. Using the Docker Client
 
 docker run hello-world # this acually failed so ran
 docker login
 docker run hello-world
+
+## Section 2: Manipulating Containers with the Docker Client
 
 # 12. Overriding Default Commands
 docker run busybox echo hi there
@@ -94,6 +96,34 @@ docker logs 119af6e7db41e13b85b2c59efaeb119229f3e87f4c7d5de3b89b5f11d78812b3
 docker stop 119af6e7db41e13b85b2c59efaeb119229f3e87f4c7d5de3b89b5f11d78812b3
 docker start 119af6e7db41e13b85b2c59efaeb119229f3e87f4c7d5de3b89b5f11d78812b3
 docker kill 119af6e7db41e13b85b2c59efaeb119229f3e87f4c7d5de3b89b5f11d78812b3
+
+
+docker run --name redisinstance -d redis
+ubuntu@ip-172-31-27-210:~$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+0701cb4f73c9        redis               "docker-entrypoint.s…"   7 minutes ago       Up 7 minutes        6379/tcp            redisinstance
+
+docker exec -ti redisinstance sh
+docker exec -ti redisinstance redis-cli
+
+STDIN	|	STDOUT	|	STDERR
+
+bash	|	powershell	|	zsh	|	sh
+
+docker run -ti busybox sh # Ran from 1st Terminal
+docker run -ti busybox sh # Ran from 2nd Terminal
+docker ps # Ran from 3rd Terminal
+CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS               NAMES
+da22b429a1db        busybox             "sh"                     About a minute ago   Up About a minute                       ecstatic_goldstine
+e451b5a7f25e        busybox             "sh"                     About a minute ago   Up About a minute                       suspicious_heyrovsky
+
+touch hithere # File create on 1st Terminal
+ls # ran on 2nd Terminal has no association on 1st Terminal
+
+## Section 3: Building Custom Images Through Docker Server
+
+
+
 
 
 
