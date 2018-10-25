@@ -122,6 +122,66 @@ ls # ran on 2nd Terminal has no association on 1st Terminal
 
 ## Section 3: Building Custom Images Through Docker Server
 
+mkdir redis-server
+cd redis-server
+
+
+vim Dockerfile
+
+[
+# Use an existing docker image as a base
+FROM alpine
+
+# Download and install a dependency
+RUN apk add --update redis
+
+# Tell the image what to do when it starts as a container
+CMD ["redis-server"]
+
+# Save the File :wq
+]
+
+
+ubuntu@ip-172-31-27-210:~/redis-image$ docker build .    # This will build the image from the Dockerfile in this directory
+Sending build context to Docker daemon  2.048kB
+Step 1/3 : FROM alpine
+latest: Pulling from library/alpine
+4fe2ade4980c: Already exists
+Digest: sha256:621c2f39f8133acb8e64023a94dbdf0d5ca81896102b9e57c0dc184cadaf5528
+Status: Downloaded newer image for alpine:latest
+ ---> 196d12cf6ab1
+Step 2/3 : RUN apk add --update redis
+ ---> Running in 63ef62240ac4
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.8/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.8/community/x86_64/APKINDEX.tar.gz
+(1/1) Installing redis (4.0.11-r0)
+Executing redis-4.0.11-r0.pre-install
+Executing redis-4.0.11-r0.post-install
+Executing busybox-1.28.4-r1.trigger
+OK: 6 MiB in 14 packages
+Removing intermediate container 63ef62240ac4
+ ---> 47422ba49004
+Step 3/3 : CMD ["redis-server"]
+ ---> Running in 08f6dd424181
+Removing intermediate container 08f6dd424181
+ ---> c1fd1babf388
+Successfully built c1fd1babf388
+
+
+ubuntu@ip-172-31-27-210:~/redis-image$ docker run c1fd1babf388
+1:C 25 Oct 20:07:24.017 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1:C 25 Oct 20:07:24.017 # Redis version=4.0.11, bits=64, commit=bca38d14, modified=0, pid=1, just started
+1:C 25 Oct 20:07:24.017 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1:M 25 Oct 20:07:24.019 * Running mode=standalone, port=6379.
+1:M 25 Oct 20:07:24.019 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+1:M 25 Oct 20:07:24.019 # Server initialized
+1:M 25 Oct 20:07:24.019 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+1:M 25 Oct 20:07:24.019 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+1:M 25 Oct 20:07:24.019 * Ready to accept connections
+
+
+
+
 
 
 
