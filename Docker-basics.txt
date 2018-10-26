@@ -179,16 +179,42 @@ ubuntu@ip-172-31-27-210:~/redis-image$ docker run c1fd1babf388
 1:M 25 Oct 20:07:24.019 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
 1:M 25 Oct 20:07:24.019 * Ready to accept connections
 
+# 32. Tagging an Image
 
+ubuntu@ip-172-31-27-210:~/redis-image$ docker build -t redquacks/redis:latest .
+Sending build context to Docker daemon  2.048kB
+Step 1/4 : FROM alpine
+ ---> 196d12cf6ab1
+Step 2/4 : RUN apk add --update gcc
+ ---> Using cache
+ ---> 4f6e948ec8e0
+Step 3/4 : RUN apk add --update redis
+ ---> Using cache
+ ---> 5afb124da534
+Step 4/4 : CMD ["redis-server"]
+ ---> Using cache
+ ---> 75f85a70096c
+Successfully built 75f85a70096c
+Successfully tagged redquacks/redis:latest
 
+redquacks	/			redis		:	latest
+Docker ID	|	Repo/Project name	|	Version
 
+# 33. Manual Image Generation with Docker Commit
 
+ubuntu@ip-172-31-27-210:~$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+fafdb479ff5b        alpine              "sh"                38 seconds ago      Up 37 seconds                           condescending_montalcini
+ubuntu@ip-172-31-27-210:~$ docker commit -c 'CMD ["redis-server"]' fafdb479ff5b
+sha256:5b253f5bcdc6d8f640092a7e1025aa5fc984febc0619008922854cb5b37ffdd3
+ubuntu@ip-172-31-27-210:~$
 
+# This creates an Image from a running snapshot of the redis docker container 
+# -c flag uses the CMD from the Dockerfile
 
+## Section 4: Making Real Projects with Docker
 
-
-
-
+# 34. Project Outline
 
 
 
