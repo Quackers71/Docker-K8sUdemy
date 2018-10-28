@@ -216,6 +216,14 @@ ubuntu@ip-172-31-27-210:~$
 
 # 34. Project Outline
 
+# Dockerfile, index.js and package.json
+# have been added in to the /simpleweb Folder
+# this has also been added to the EC2 instance including access to this Repo
+
+docker build . # Has been ran multiple times within the /simpleweb Folder
+# Then
+docker build -t quackers/simpleweb .
+docker run -p 8080:8080 quackers/simpleweb
 
 
 
