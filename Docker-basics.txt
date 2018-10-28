@@ -225,6 +225,18 @@ docker build . # Has been ran multiple times within the /simpleweb Folder
 docker build -t quackers/simpleweb .
 docker run -p 8080:8080 quackers/simpleweb
 
+docker run -ti quackers/simpleweb sh
+#or from a 2nd Command Prompt
+docker exec -ti 1082e6a0a01b sh
+# i.e.
+
+/ # ubuntu@ip-172-31-27-210:~$ docker exec -ti 1082e6a0a01b sh
+/usr/app # ls
+Dockerfile         index.js           node_modules       package-lock.json  package.json
+/usr/app #
+
+
+
 
 
 
