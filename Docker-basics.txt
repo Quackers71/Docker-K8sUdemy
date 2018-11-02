@@ -235,6 +235,48 @@ docker exec -ti 1082e6a0a01b sh
 Dockerfile         index.js           node_modules       package-lock.json  package.json
 /usr/app #
 
+## Section: 5 Docker Compose with Multiple Containers
+# 51. Docker Compose Commands
+
+# New Project files have been added into //Docker-K8sUdemy/visits
+
+-rw-r--r-- 1 Rob 197609 120 Nov  2 22:39 docker-compose.yml
+-rw-r--r-- 1 Rob 197609 113 Nov  2 22:24 Dockerfile
+-rw-r--r-- 1 Rob 197609 478 Nov  2 22:45 index.js
+-rw-r--r-- 1 Rob 197609 145 Nov  2 22:16 package.json
+
+# Now run
+docker-compose up
+or 
+ubuntu@ip-172-31-27-210:~/Docker-K8sUdemy/visits$ docker-compose up -d
+WARNING: The Docker Engine you're using is running in swarm mode.
+
+Compose does not use swarm mode to deploy services to multiple nodes in a swarm. All containers will be scheduled on the current node.
+
+To deploy your application across the swarm, use `docker stack deploy`.
+
+Starting visits_redis-server_1 ... done
+Starting visits_node-app_1     ... done
+
+ubuntu@ip-172-31-27-210:~/Docker-K8sUdemy/visits$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+76e0a58873a6        visits_node-app     "npm start"              8 minutes ago       Up 51 seconds       0.0.0.0:4001->8081/tcp   visits_node-app_1
+281dec96bcf6        redis               "docker-entrypoint.s…"   8 minutes ago       Up 52 seconds       6379/tcp                 visits_redis-server_1
+
+# Then to stop the services
+
+ubuntu@ip-172-31-27-210:~/Docker-K8sUdemy/visits$ docker-compose down
+Stopping visits_node-app_1     ... done
+Stopping visits_redis-server_1 ... done
+Removing visits_node-app_1     ... done
+Removing visits_redis-server_1 ... done
+Removing network visits_default
+
+
+
+
+
+
 
 
 
