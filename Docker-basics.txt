@@ -272,6 +272,26 @@ Removing visits_node-app_1     ... done
 Removing visits_redis-server_1 ... done
 Removing network visits_default
 
+# 54. Automatic Container Restarts
+
+# File changes can be seen in the commits
+# Commands used were :
+docker-compose up --build
+docker-compose up
+docker ps
+#or
+docker-compose ps # used only in the project directory
+
+## Section: 6 Creating a Production Grade Workflow
+# 57. Flow Specifics
+# Using Github 
+# Branches
+# feature > pull request > master >> Travis CI >>> AWS Hosting
+# Main Branch We will use: feature
+# Travis CI is a hosted, distributed continuous integration service used to build and test software projects hosted at GitHub.
+
+
+
 
 
 
