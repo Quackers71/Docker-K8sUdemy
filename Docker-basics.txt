@@ -334,7 +334,7 @@ Time:        2.595s
 Ran all test suites.
 
 
-npm run build
+sudo npm run build
 ubuntu@ip-172-31-27-210:~/frontend$ sudo npm run build
 
 > frontend@0.1.0 build /home/ubuntu/frontend
