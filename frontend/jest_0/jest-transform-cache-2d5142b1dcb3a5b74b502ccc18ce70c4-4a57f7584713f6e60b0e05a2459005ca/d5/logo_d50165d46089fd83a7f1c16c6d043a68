@@ -1,0 +1,14 @@
+9fcadc5a84b2dd29f0a93d7f8310dc0c
+module.exports = {
+        __esModule: true,
+        default: "logo.svg",
+        ReactComponent: (props) => ({
+          $$typeof: Symbol.for('react.element'),
+          type: 'svg',
+          ref: null,
+          key: null,
+          props: Object.assign({}, props, {
+            children: "logo.svg"
+          })
+        }),
+      };
