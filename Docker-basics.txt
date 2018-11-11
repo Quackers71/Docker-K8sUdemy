@@ -379,9 +379,49 @@ You can now view frontend in the browser.
 Note that the development build is not optimized.
 To create a production build, use npm run build.
 
+# 62. Creating the Dev Dockerfile
+ubuntu@ip-172-31-27-210:~/Docker-K8sUdemy/frontend$ docker build -f Dockerfile.dev .
+Sending build context to Docker daemon  49.15kB
+Step 1/6 : FROM node:alpine
+ ---> 5d526f8ba00b
+Step 2/6 : WORKDIR '/app'
+ ---> Using cache
+ ---> 361499bfc40c
+Step 3/6 : COPY package.json .
+ ---> fa5b438c2da3
+Step 4/6 : RUN npm install
+ ---> Running in ad5902b73ec8
+npm WARN deprecated circular-json@0.3.3: CircularJSON is in maintenance only, flatted is its successor.
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN ajv-keywords@3.2.0 requires a peer of ajv@^6.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.4: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
 
+added 1716 packages from 661 contributors and audited 35661 packages in 43.604s
+found 0 vulnerabilities
 
+Removing intermediate container ad5902b73ec8
+ ---> bc2fa41a7110
+Step 5/6 : COPY . .
+ ---> 43adcc4c9642
+Step 6/6 : CMD ["npm", "start"]
+ ---> Running in b88d3a32d447
+Removing intermediate container b88d3a32d447
+ ---> 83c18d5c43bf
+Successfully built 83c18d5c43bf
 
+# 63. Duplicating dependencies
+# if you find the /node_modules folder - remove it manually
+
+# 64. Starting the Container
+docker run -p 3000:3000 83c18d5c43bf
+
+# 65. Docker Volumes
+docker run -p 3000:3000 -v $(pwd):/app 83c18d5c43bf
+# This errors
+
+# 66. Bookmarking Volumes
+docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app 83c18d5c43bf
 
 
 
