@@ -422,6 +422,8 @@ docker run -p 3000:3000 -v $(pwd):/app 83c18d5c43bf
 
 # 66. Bookmarking Volumes
 docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app 83c18d5c43bf
+# making changes in VSC will now populate into Docker Container on a git push <origin>
+
 
 
 
