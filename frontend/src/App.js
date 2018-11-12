@@ -9,8 +9,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
-            Pointing to quackersblog.quackers.ninja:3000 for now
+            Edit <code>src/App.js</code> and save to reload.          
           </p>
           <p>
             Pointing to quackersblog.quackers.ninja:3000 for now
