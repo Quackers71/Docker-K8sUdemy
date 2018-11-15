@@ -424,6 +424,15 @@ docker run -p 3000:3000 -v $(pwd):/app 83c18d5c43bf
 docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app 83c18d5c43bf
 # making changes in VSC will now populate into Docker Container on a git push <origin>
 
+# 71. Executing Tests
+ubuntu@ip-172-31-27-210:~/Docker-K8sUdemy/frontend$ docker build -f Dockerfile.dev .
+Successfully built 16ecf4a3fcc6
+
+docker run 16ecf4a3fcc6 npm run test
+# add the -ti to make the CLI interactive i.e. STDIN
+docker run -ti 16ecf4a3fcc6 npm run test
+
+
 
 
 
