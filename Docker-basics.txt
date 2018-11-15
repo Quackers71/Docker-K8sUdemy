@@ -432,6 +432,28 @@ docker run 16ecf4a3fcc6 npm run test
 # add the -ti to make the CLI interactive i.e. STDIN
 docker run -ti 16ecf4a3fcc6 npm run test
 
+# 72. Live Updating Tests
+# 
+docker-compose up
+
+docker ps # to acquire the running Docker ID
+# then run the Test inside the Docker Container
+docker exec -ti 80996240f002 npm run test
+
+# When the 2nd Test is removed from App.test.js it will re-run the test and correct to 1 test
+
+# 73. Docker Compose for Running Tests
+# Added the Test(2nd Service) to the docker-compose file
+
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+        - /app/node_modules
+      - .:/app
+    command: ["npm", "run, "test"]
+
 
 
 
