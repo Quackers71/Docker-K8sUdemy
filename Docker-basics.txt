@@ -454,6 +454,12 @@ docker exec -ti 80996240f002 npm run test
       - .:/app
     command: ["npm", "run, "test"]
 
+docker-compose up --build
+
+ubuntu@ip-172-31-27-210:~/Docker-K8sUdemy/frontend$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                  NAMES
+7dd90c10677c        frontend_web        "npm start"         42 seconds ago      Up 41 seconds       0.0.0.0:80->3000/tcp   frontend_web_1
+d57765727845        frontend_tests      "npm run test"      42 seconds ago      Up 21 seconds                              frontend_tests_1
 
 
 
