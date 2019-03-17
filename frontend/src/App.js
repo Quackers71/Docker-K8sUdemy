@@ -7,11 +7,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-	   <p>This is the development container for quackersblog.quackers.ninja on port 3000</p>
+          <img src={logo} className="App-logo" alt="logo" />          
+	        <p>This is the ฿ Production container for docker-react.quackers.ninja</p>
+          <p>Controlled in ELBS</p>
           <a
             className="App-link"
             href="https://reactjs.org"
